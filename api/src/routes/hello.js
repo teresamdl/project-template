@@ -12,3 +12,15 @@ server.route({
   path: '/hello',
   handler: resources.hello.post
 })
+
+server.route({
+  method: 'GET',
+  path: '/getPatients',
+  handler: resources.hello.getPatients
+})
+
+server.route({
+  method: 'GET',
+  path: '/getRequests',
+  handler: resources.hello.getRequests
+})
