@@ -54,25 +54,26 @@ app.controller('MainCtrl', function($scope, $http){
 	
 	$scope.tableActs=[];	
 	
-	$scope.addMedAct = function (a){
+	$scope.addMedAct = function(a){
 
 		$http.get("http://localhost:9000/getReimb").then(function(response) {
 		$scope.reimb = response.data;
 	});
-
+	
 		$scope.actName = a.name;
 		$scope.actId = a.actID;		
 	   $scope.actCost = a.cost;
 		
 		var r = eval($scope.reimb);
 
-		for(i=0;i<reimb.length;i++){
+		for(var i=0;i<$scope.reimb.length;i++){
+			
 			if($scope.policy_t === r[i].policy_type){
 				$scope.Reimb = r[i].reimb_percentage;
 			}
 		}
 		
-		$scope.tableActs.push({ 'actId': $scope.actId, 'actName': $scope.actName, 'actCost': $scope.actCost, 'Reimb': $scope.reimb});
+		$scope.tableActs.push({ 'actId': $scope.actId, 'actName': $scope.actName, 'actCost': $scope.actCost, 'Reimb': $scope.Reimb});
 	}
 
 	$scope.addAct = function (){
